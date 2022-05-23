@@ -1,65 +1,109 @@
 *{
-    margin:10px;
-    padding:10px;
+    margin: 2px;
+    padding: 2px;
     box-sizing:border-box;
-    font-size: 16px;
+    font-size: 20px;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: 'Roboto', sans-serif;
 }
 
 .padre{
-   display: flex;
-   flex-flow: column nowrap;
+    background:#000;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .header{
     background:#000;
     display: flex;
     flex-flow: column nowrap;
+
+    
 }
 
 .menu{
    background: #E45826;
    display: flex;
    flex-direction: row;
-   flex-wrap: nowrap;
-   height: 100px;
-   align-items: center; 
+   flex-wrap: wrap;
+   /* height: 100px; */
+   align-items: left; 
 }
 
 .logo{
-    background: #F0A500;
+    background: #0121ed;
     flex: 1 1 auto;
-    height: 30px;
-}
-.nav{
-    background:  #F0A500;
-    flex: 5 1 auto;
-    height: 30px;
+    height: auto;
+    width: 50px;
+    flex-wrap: nowrap;
 }
 
+.nav{
+        display: flex; /*aca le digo que es flexible */
+        /*flex-direction:row-reverse;*/
+        /*flex-direction:column;*/
+        flex-direction:row;
+        /* flex-wrap: nowrap; */ /* valor por defecto, todos los ítems en un sola línea. */
+        flex-wrap: wrap;
+        flex: 2 1 50%;
+        background-color: rgb(245, 8, 8);
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .nav >div {
+        background-color: rgb(10, 0, 0);
+        }
+    
+        .nav >div> a{
+        text-decoration:none;  /* para sacarle el subrayado*/
+        font-size: 30px;
+        }
+
 .rrss{
-    background:  #F0A500;
-    flex: 1 1 auto;
-    height: 30px;
+    position: fixed;
+    right: 0%;
+    top: 15%;
+    background: rgba(255, 255, 255, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 100;
+    height: 50px;
+    width: 50px;
 }
 
 .texto-principal{
     background:  #E45826;
+    font-size: 30px;
 }
 
 h1 {
     background: #F0A500;
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 30px;
+    padding: 1%;
+}
+
+p {
+    font-size: 20px;
 }
 
 .seccion{
     background:#000;
     display: flex;
+    justify-content: space-around;
 }
 
 .articulos{
     background:rgb(255, 68, 0);
     flex: 2 1 auto;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
 .articulo{
@@ -67,18 +111,17 @@ h1 {
     flex: 1 1 40%;
 }
 
-.navegacion{
-    background:rgb(179, 161, 0);
-    flex: 1 1 100%;
+.mapa{
+    justify-content: center;
+    flex-flow: row nowrap;
+    width: 500px;
+    height: 300px;
+
 }
 
 .aside{
     background:rgb(255, 243, 138);
     flex: 1 1 auto;
-}
-
-.publicidad{
-    background:rgb(254, 246, 177);
 }
 
 .footer{
@@ -88,9 +131,25 @@ h1 {
 }
 
 .pie{
-    background:rgb(255, 246, 246);
-    width: 300px;
+    background:  #E45826;
+    font-size: 15px;
+	font-weight: bold;
 }
+
+.botonEnviar {background-color: #e7e7e7; color: black; font-size: 20px;border-radius: 12px;width: 150px;} /* Gris */
+
+/*----------------------------------------------------------------*/
+/* Imagen con bordes redondeados, con limites de tamaño           */
+/*----------------------------------------------------------------*/
+img {
+    border-radius: 30px;
+    width: 100%;
+    max-width:400px;
+  }
+
+/*----------------------------------------------------------------*/
+/* Punto de corte para pantallas tipo tablet                      */
+/*----------------------------------------------------------------*/
 
 @media all and (max-width: 800px)
 {
@@ -98,11 +157,9 @@ h1 {
         flex-direction: column;
     }
 
-    .menu{
-        background: #E45826;
-        flex-direction: column;
-        height: auto;
-    }
+    .nav>div>a{
+        font-size: 25px;
+        }
     
     .aside{
         display: flex;
@@ -112,18 +169,102 @@ h1 {
     .publicidad{
         flex: 1 1 30%;
     }
+
+    
+    .logo{
+        /* background: #0121ed; */
+        flex: 1 1 auto;
+        order: 0;
+        height: 85px;
+        width: 85px;
+        }
+
+    .texto-principal{
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    p {
+        font-size: 18px;
+    }
 }
 
+/*----------------------------------------------------------------*/
+/* Punto de corte para pantallas tipo celular                     */
+/*----------------------------------------------------------------*/
 @media all and (max-width: 600px)
 {
    .articulos{
        flex-direction: column;
    }
+
+   .mapa{
+    justify-content: center;
+    width: 400px;
+    height: 300px;
+    }
+
+    
+.logo{
+    /* background: #0121ed; */
+    flex: 1 1 auto;
+    order: 0;
+    height: 70px;
+    width: 70px;
+    }
+
+    .nav >div> a{
+        text-decoration:none;  /* para sacarle el subrayado*/
+        font-size: 20px;
+        }
+
+        h1 {
+            font-size: 25px;
+        }
+        
+        h2 {
+            font-size: 16px;
+        }
+       
+        h3 {
+            font-size: 16px;
+        }
+        
+        p {
+            font-size: 14px;
+        }
+
 }
 
 @media all and (max-width: 400px)
 {
-   .aside{
+   .header{
        flex-direction: column;
    }
+
+   
+   .mapa{
+        justify-content: center;
+        width: 200px;
+        height: 200px;
+    }
+
+    .nav>div>a{
+        font-size: 20px;
+        }
+    
+.logo{
+    /* background: #0121ed; */
+    flex: 1 1 auto;     /* NO FUNCIONA PARA ANCHO DE LOGO*/
+    order: 0;
+    height: 100px; /* NO FUNCIONA*/
+    width: 100px; /* NO FUNCIONA*/
+    }
 }

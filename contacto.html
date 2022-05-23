@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-32x32.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&family=Rubik+Puddles&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <title>Web Oficial del Grupo De Bella</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="menu">
+           <div class="logo">
+            <img src="./images/logo-min.jpg" alt="Logo Inmobiliaria Grupo De Bella">
+           </div>
+           
+           <div class="nav">   
+                <div><a href="index.html">Home</a></div>
+                <div><a href="#">Propiedades</a></div>
+                <div><a href="#">Emprendimientos</a></div>
+                <div><a href="faqs.html" target="blank">Preguntas Frecuentes</a></div>
+                <div><a href="#">Contacto</a></div>
+            </div>
+
+           <div class="rrss">
+            <a href="https://www.instagram.com/grupodebella/" target="blank"></a><img src="./images/rrss/instagram-med.png"></a>
+            <a href="https://es-la.facebook.com/grupodebella" target="blank"></a><img src="./images/rrss/facebook-med.png"></a>                
+            </div>
+    </header>
+
+    <div class="texto-principal">
+        <h2>Completa el formulario para que podamos contactarnos con vos</h2>
+        <p> Te responderemos lo antes posible!</p>
+    </div>
+
+<div class="articulos">
+    <form action="" name="formulario" id="formulario" method="get">
+        <p style="font-weight: bold;">Nombre y Apellido: </p>
+        <input type="text" name="nombre" id="nombre" maxlength="30" placeholder="Nombre y Apellido:">
+        <br>
+        <br>
+        <p style="font-weight: bold;">Sexo: </p>
+        <input type="radio" name="sexo" id="hombre" value="Hombre"> Hombre
+        <input type="radio" name="sexo" id="mujer" value="Mujer"> Mujer
+        <br>
+        <br>
+        <label for="email" style="font-weight: bold;">Ingresa tu email:</label>
+        <input type="email" id="email" title="Proporcione solo una dirección de correo electrónico válida" size="30" required
+        placeholder="tumail@dominio.com">
+        <br>
+        <br>
+        <p style="font-weight: bold;">Motivo de consulta: </p>
+        <select name=interes>
+            <option value="Seleccionar">Elegir
+            <option value="Compra">Comprar
+            <option value="Venta">Vender
+            <option value="Alquilar">Alquilar
+            <option value="DarAlquilar">Dar en alquiler
+        </select>
+        <br>
+        <br>
+        <p style="font-weight: bold;">Tu consulta</p><textarea name="comunicacion" rows="5" cols="30" placeholder="Hola Soy ... mi nro de cel es 1155555555 quiero consultar por la propiedad xxxxxxxxx"></textarea><br>
+        <br>       
+        <input type="checkbox" name="terminos" id="terminos"> Acepta que nos contactemos con vos!
+        <br>
+        <br>
+        <input type="submit" class="botonEnviar" id="btn" name="btn" value="Enviar">
+    </form>
+</div> <!-- fin class articulos-->
+
+<footer class="footer">
+    <div class="pie"><p>Honorio Pueyrredon 755 C. A. B. A. - Consultas al 4981-2555 / 4983-3432</p></div>
+</footer>
+
+<script>
+    
+    (function(){  // Función anónima, https://geekytheory.com/javascript-funciones-anonimas-y-objetos/
+        //Variables
+
+        var formulario = document.getElementsByName('formulario')[0],   //[0] Primer elemento, el formulario en si mismo.
+            elementos = formulario.elements,                            // Elementos del form, no lo usamos en este script.
+            boton = document.getElementById('btn');                     // Elemento id="boton"
+
+
+        // --------------------------------------------------------
+        // Validamos Nombre
+        // --------------------------------------------------------            
+        var validarString = function(e){
+            if (formulario.nombre.value == 0){      // Si el campo id="nombre" del form está vacio...
+                alert("Completa el campo nombre");
+                e.preventDefault();                 // Evita elcomportamiento por defecto, es decir, que se envíen los datos completaros en el formulario
+            }
+        };
+        
+        // --------------------------------------------------------   
+        // Validamos Sexo   
+        // --------------------------------------------------------                  
+        var validarRadio = function(e){
+            if (formulario.sexo[0].checked == true || 
+                formulario.sexo[1].checked == true){
+            } else{  //Si al menos uno de los Radio no está marcado....
+                alert("Completa el campo sexo");
+                e.preventDefault();
+            }
+        };
+
+        // --------------------------------------------------------
+        // Validamos interés
+        // --------------------------------------------------------            
+        var validarSelect = function(e){
+            if (formulario.interes.selectedIndex == 0){      // Se encuentra en la primer opción del Select
+                alert("Selecciona el motivo de contacto");
+                e.preventDefault();                 // Evita elcomportamiento por defecto, es decir, que se envíen los datos completaros en el formulario
+            }
+        };
+
+        // --------------------------------------------------------
+        // Validamos Comunicación
+        // --------------------------------------------------------            
+        var validarString = function(e){
+            if (formulario.comunicacion.value == 0){      // Para ver q envíen texto con la consulta
+                alert("Por favor envia más detalles de tu consulta para que podamos asesorarte");
+                e.preventDefault();                 // Evita elcomportamiento por defecto, es decir, que se envíen los datos completaros en el formulario
+            }
+        };
+        
+        // --------------------------------------------------------   
+        // Validamos Aceptación de contacto     
+        // --------------------------------------------------------              
+        var validarCheckbox = function(e){
+            if (formulario.terminos.checked == false){
+                alert("Por favor acepta que nos contactemos con vos");
+                e.preventDefault();
+            }
+        };
+
+        // --------------------------------------------------------   
+        // Se ejecuta al presionar submit e invoca a las tres validaciones   
+        // --------------------------------------------------------                  
+        var validar = function(e){  // "e" es el evento recibido del form (https://developer.mozilla.org/es/docs/Web/API/Event/preventDefault)
+            validarString(e);
+            validarRadio(e);
+            validarCheckbox(e);
+            validarSelect(e);
+        };
+        
+        // --------------------------------------------------------
+        // Espera que se presione "enviar" y llama a "validar"
+        // submit es un evento DEL FORM, no del botón!
+        formulario.addEventListener("submit", validar); // Al ejecutarse el evento "enviar" invoca a la función "validar"
+    }())
+
+</script>
+
+</body>
+</html>
